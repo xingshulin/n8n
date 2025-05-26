@@ -11,3 +11,4 @@ services:
       - N8N_EDITOR_BASE_URL
       - N8N_PROXY_HOPS=1
       - VUE_APP_URL_BASE_API
+      - WEBHOOK_URL

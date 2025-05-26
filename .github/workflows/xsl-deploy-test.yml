@@ -51,6 +51,6 @@ jobs:
             cat docker-compose.yml
             docker-compose pull
             docker-compose down
-            export N8N_EDITOR_BASE_URL=${{ vars.TEST_N8N_EDITOR_BASE_URL }} VUE_APP_URL_BASE_API=${{ vars.TEST_N8N_EDITOR_BASE_URL }}
+            export N8N_EDITOR_BASE_URL=${{ vars.TEST_N8N_EDITOR_BASE_URL }} VUE_APP_URL_BASE_API=${{ vars.TEST_N8N_EDITOR_BASE_URL }} WEBHOOK_URL=${{ vars.TEST_N8N_EDITOR_BASE_URL }}
 
             docker-compose up -d
