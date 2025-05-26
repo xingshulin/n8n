@@ -7,3 +7,5 @@ services:
       - "5678:5678"
     volumes:
       - ./n8n/data:/home/node/.n8n
+    environment:
+      - N8N_EDITOR_BASE_URL

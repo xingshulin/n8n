@@ -51,5 +51,5 @@ jobs:
             cat docker-compose.yml
             docker-compose pull
             docker-compose down
-            
+						export N8N_EDITOR_BASE_URL=${{ vars.TEST_N8N_EDITOR_BASE_URL }}
             docker-compose up -d
