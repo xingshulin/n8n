@@ -1,0 +1,55 @@
+name: Test Deploy n8n to txy
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_target:
+        description: '注意：发布前确认选择上面的 tag, 当前为 **测试** 环境部署，请确认输入上面的版本号'
+        required: true
+        type: string
+
+# on:
+#   release:
+#     types: [published]
+
+jobs:
+  deploy:
+    if: ${{ github.event.inputs.deploy_target == github.ref_name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: git checkout ${{github.ref_name}}
+
+      - name: 当前git ref name
+        run: echo ${{ github.ref_name }}
+
+      - name: 查看当前docker-compose 文件
+        run: cat xsl/docker-compose.yaml
+
+      - name: docker 文件拷贝到云服务器
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.TEST_TXY_SERVER_HOST }}
+          username: ${{ secrets.TEST_TXY_SERVER_SSH_USERNAME }}
+          password: ${{ secrets.TEST_TXY_SERVER_SSH_PASSWORD }}
+          source: 'xsl/*'
+          target: '~/app/n8n'
+          strip_components: 1
+
+  
+
+      - name: 登录云服务器 部署
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.TEST_TXY_SERVER_HOST }}
+          username: ${{ secrets.TEST_TXY_SERVER_SSH_USERNAME }}
+          password: ${{ secrets.TEST_TXY_SERVER_SSH_PASSWORD }}
+          script: |
+            cd ~/app/n8n
+            ls
+            cat docker-compose.yml
+            docker-compose pull
+            docker-compose down
+            
+            docker-compose up -d
