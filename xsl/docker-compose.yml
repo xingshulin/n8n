@@ -9,3 +9,5 @@ services:
       - ./n8n/data:/home/node/.n8n
     environment:
       - N8N_EDITOR_BASE_URL
+      - N8N_PROXY_HOPS=1
+      - VUE_APP_URL_BASE_API
