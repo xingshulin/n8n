@@ -12,3 +12,7 @@ services:
       - N8N_PROXY_HOPS=1
       - VUE_APP_URL_BASE_API
       - WEBHOOK_URL
+      - N8N_SMTP_HOST
+      - N8N_SMTP_PORT
+      - N8N_SMTP_USER
+      - N8N_SMTP_PASS

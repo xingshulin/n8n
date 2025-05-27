@@ -52,5 +52,6 @@ jobs:
             docker-compose pull
             docker-compose down
             export N8N_EDITOR_BASE_URL=${{ vars.TEST_N8N_EDITOR_BASE_URL }} VUE_APP_URL_BASE_API=${{ vars.TEST_N8N_EDITOR_BASE_URL }} WEBHOOK_URL=${{ vars.TEST_N8N_EDITOR_BASE_URL }}
+            export N8N_SMTP_HOST=${{ secrets.SMTP_SERVER }} N8N_SMTP_PORT=${{ secrets.SMTP_PORT }} N8N_SMTP_USER=${{ secrets.SMTP_USERNAME }} N8N_SMTP_PASS=${{ secrets.SMTP_PASSWORD }}
 
             docker-compose up -d
