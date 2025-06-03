@@ -82,6 +82,7 @@ export const MOVE_FOLDER_MODAL_KEY = 'moveFolder';
 export const WORKFLOW_ACTIVATION_CONFLICTING_WEBHOOK_MODAL_KEY =
 	'workflowActivationConflictingWebhook';
 export const FROM_AI_PARAMETERS_MODAL_KEY = 'fromAiParameters';
+export const WORKFLOW_EXTRACTION_NAME_MODAL_KEY = 'workflowExtractionName';
 
 export const COMMUNITY_PACKAGE_MANAGE_ACTIONS = {
 	UNINSTALL: 'uninstall',
@@ -627,6 +628,7 @@ export const enum WORKFLOW_MENU_ACTIONS {
 	ARCHIVE = 'archive',
 	UNARCHIVE = 'unarchive',
 	RENAME = 'rename',
+	CHANGE_OWNER = 'change-owner',
 }
 
 /**
@@ -740,7 +742,7 @@ export const EXPERIMENTS_TO_TRACK = [
 	WORKFLOW_BUILDER_EXPERIMENT.name,
 ];
 
-export const WORKFLOW_EVALUATION_EXPERIMENT = '025_workflow_evaluation';
+export const WORKFLOW_EVALUATION_EXPERIMENT = '032_evaluation_mvp';
 
 export const MFA_FORM = {
 	MFA_TOKEN: 'MFA_TOKEN',
